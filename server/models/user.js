@@ -1,60 +1,52 @@
-// require modules for the User Model
+// require modules for creating a model
 let mongoose = require('mongoose');
 let passportLocalMongoose = require('passport-local-mongoose');
 
-let User = mongoose.Schema
-(
+let User = mongoose.Schema (
     {
-        username: 
-        {
+        username: {
             type: String,
-            default: '',
+            default: "",
             trim: true,
-            required: 'username is required'
+            required: 'Username is required.'
         },
-        /*
-        password: 
-        {
+        /* Process on passport.authenticate - encrypted
+        password: {
             type: String,
-            default: '';
+            default: "",
             trim: true,
-            required: 'password is required'
-        }
+            required: 'Password is required.'
+        },
         */
-       email: 
-       {
+        email: {
             type: String,
-            default: '',
+            default: "",
             trim: true,
-            required: 'email address is required'
-       },
-       displayName: 
-       {
+            required: 'Email is required.'
+        },
+        displayName: {
             type: String,
-            default: '',
+            default: "",
             trim: true,
-            required: 'Display Name is required'
-       },
-       created: 
-       {
+            required: 'Display Name is required.'
+        },
+        created: {
             type: Date,
             default: Date.now
-       },
-       update: 
-       {
+        },
+        update: {
             type: Date,
             default: Date.now
-       }
+        }
     },
     {
         collection: "users"
     }
 );
 
-// configure options for User Model
-
-let options = ({ missingPasswordError: 'Wrong / Missing Password'});
-
+// configure options for user Model
+let options = ({ missingPasswordError: 'Wrong / Missing Password' });
 User.plugin(passportLocalMongoose, options);
+
 
 module.exports.User = mongoose.model('User', User);
