@@ -1,2 +1,2 @@
 # COMP229-WebAppExample
-Web app made to learn mongo, express, angular and node basics.
+Web app made to learn MEAN - mongo, express, angular and node basics.
